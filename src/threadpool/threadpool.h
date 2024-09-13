@@ -27,6 +27,6 @@ int init(int thread_count_start);
 int destroy();
 int start();
 int stop();
-int queue_process(void (*process)());
+int queue_process(void *(*process) (void *));
 
 #endif // THREADPOOL_H

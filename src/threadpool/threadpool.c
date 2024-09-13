@@ -67,7 +67,8 @@ int queue_process(void *(*process) (void *)) {
 	if (have_non_working) {
 		for (int i = 0; i < thread_count; i++) {
 			thread t = threads[i];
-			if (!t.running) {void *(*__start_routine) (void *)
+			if (!t.running) {
+				void *(*__start_routine) (void *)
 				t.running = true;
 				t.callback = process;
 				pthread_create(&t.id, NULL, process, NULL)
