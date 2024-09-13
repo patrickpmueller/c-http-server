@@ -1,0 +1,4 @@
+#ifdef BUILDTOOLS_H
+#define BUILDTOOLS_H
+
+#endif BUILDTOOLS_H
