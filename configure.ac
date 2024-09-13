@@ -4,15 +4,17 @@ AC_PREREQ([2.72])
 AC_INIT([http-webserver],[0.1],[patrickpmueller@yahoo.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIRS([m4])
 
 # Libtool
 AM_PROG_AR
-AM_PATH_CHECK
-AC_PROG_RANLIB
 LT_INIT
 
 # Checks for programs.
 AC_PROG_CC
+AC_PROG_AR
+AC_PROG_CXX
+AC_PROG_CPP
 
 # Checks for header files.
 AC_CHECK_HEADERS([unistd.h])
