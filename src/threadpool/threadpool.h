@@ -13,7 +13,7 @@
 
 typedef struct {
     pthread_t id;
-    void (*callback)();
+    req job; 
     bool running;
 } thread;
 

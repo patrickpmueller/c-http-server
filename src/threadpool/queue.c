@@ -24,7 +24,7 @@ bool is_full(queue *q)
 
 // Function to add an element to the queue (Enqueue
 // operation)
-int enqueue(queue *q, job value)
+int enqueue(queue *q, req value)
 {
 	if (!queue_initialized) {
 		return 1;
@@ -39,24 +39,24 @@ int enqueue(queue *q, job value)
 	return 0;
 }
 
-job dequeue(queue *q) 
+req dequeue(queue *q) 
 {
 	if (!queue_initialized || is_empty) {
-		job empty = { 0 };
+		req empty = { 0 };
 		return empty;
 	}
 	
-	job ret = peek(q);
+	req ret = peek(q);
 	q->head = q->head->prev;
 	q->head->next = NULL;
 	
 	return ret;
 }
 
-job peek(queue *q) 
+req peek(queue *q) 
 {
 	if (!queue_initialized || is_empty) {
-		job empty = { 0 };
+		req empty = { 0 };
 		return empty;
 	}
 	

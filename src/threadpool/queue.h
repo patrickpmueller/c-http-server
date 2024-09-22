@@ -8,8 +8,10 @@
 #define MAX_SIZE 128;
 
 typedef struct {
-    void *(*run) (void *);
-} job;
+    char *http_method;
+    char *path;
+    char *http_version;
+} req;
 
 typedef struct node {
     struct node *next;
@@ -29,8 +31,8 @@ extern bool queue_initialized;
 void initializeQueue(queue *q);
 bool is_empty(queue *q);
 bool is_full(queue *q);
-int enqueue(queue *q, job value);
-job dequeue(queue *q);
-job peek(queue *q);
+int enqueue(queue *q, req value);
+req dequeue(queue *q);
+req peek(queue *q);
 
 #endif // QUEUE_H

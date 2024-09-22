@@ -63,26 +63,23 @@ int start()
 	return 0;
 }
 
-int queue_process(void *(*process) (void *)) {
+int queue_request(req request) {
 	if (have_non_working) {
 		for (int i = 0; i < thread_count; i++) {
 			thread t = threads[i];
 			if (!t.running) {
-				void *(*__start_routine) (void *)
 				t.running = true;
-				t.callback = process;
-				pthread_create(&t.id, NULL, process, NULL)
+				pthread_create(&t.id, NULL, process, NULL);
 				break;
 			}
 		}
 	} else {
-		enqueue(thread_request_queue, { .run = process });
+		enqueue(thread_request_queue, request);
 	}
 }
 
-void continue_after_finished(void (*process)) {
-	process();
-	if (!is_empty(thread_request_queue)) {
-		dequeue(thread_request_queue)->run();
+void thread() {
+	while (!is_empty(thread_request_queue)) {
+		req current_req = dequeue(thread_request_queue);
 	}
 }
